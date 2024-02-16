@@ -26,8 +26,6 @@ insert into transport(provider_id, stamp, model, capacity) values
 (1, 'Chevrolet', 'Легковой', 120),
 (2, 'Lada', 'Грузовик', 58),
 (2, 'Lada', 'Легковой', 60);
-
-select 
     
 select 
     pr.id as provider_id,
