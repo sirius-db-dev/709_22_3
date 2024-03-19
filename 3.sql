@@ -7,7 +7,9 @@
 create extension if not exists "uuid-ossp";
 
 
-create table  if not exists event
+drop table member, event, member_to_event;
+
+create table event
 (
     id uuid primary key default uuid_generate_v4(),
     title text,
@@ -29,18 +31,21 @@ create table member_to_event
     primary key (member_id, event_id)
 );
 
-drop table event, member_to_event;
 
 insert into event (title, place) values
 ('Новый год', 'Дом'),
 ('Запуск ракеты', 'Космодром'),
 ('День Победы', 'Кремль'),
-('ДР', 'Sigma');
+('ДР', 'Sigma'),
+('Падение метеорита', 'Челябинск');
+
 
 insert into member (first_name, last_name, birthdate) values
 ('Maksim', 'Nudga', '2006-02-04'),
-('Sergo', 'Telegin', '2006-10-9'),
-('foo', 'bar', '1999-02-22');
+('Sergo', 'Telegin', '2006-10-09'),
+('foo', 'bar', '1999-02-22'),
+('fizz','buzz','2013-02-15'),
+('Oleg', 'Kus', '1989-09-28');
 
 
 
@@ -53,7 +58,9 @@ values
     ((select id from member where first_name = 'Sergo'),
      (select id from event where title = 'ДР')),
     ((select id from member where first_name = 'Maksim'),
-     (select id from event where title = 'ДР'));
+     (select id from event where title = 'ДР')),
+    ((select id from member where first_name = 'fizz'),
+     (select id from event where title = 'День Победы'));
 
 
 
@@ -83,7 +90,6 @@ from event s
 left join member_to_event st on s.id = st.event_id
 left join member t on t.id = st.member_id
 group by s.id;
-
 
 
 
