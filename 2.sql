@@ -35,7 +35,9 @@ create table student_to_task
 insert into student(nick_name, date_reg, mmr)
 values ('Froob', '1996-06-01', '1200'),
        ('Rubsun', '1976-07-19', '111111'),
-       ('Bob228', '1956-11-22', '12');
+       ('Bob228', '1956-11-22', '12'),
+       ('Frozen', '2020-10-10','12'),
+       ('Miro','2010-01-01', '12312');
 
 insert into task (title, description, complexity)
 values ('HW', 'HW1', 10),
@@ -49,7 +51,9 @@ values
     ((select id from student where nick_name = 'Bob228'),
      (select id from task where title = 'Тренеровка')),
     ((select id from student where nick_name = 'Rubsun'),
-     (select id from task where title = 'Прогулка'));
+     (select id from task where title = 'HW')),
+    ((select id from student where nick_name = 'Miro'),
+     (select id from task where title='Тренеровка'));
 
 
 select
@@ -79,5 +83,3 @@ from task t
 left join student_to_task st on t.id = st.task_id
 left join student s on s.id = st.student_id
 group by t.id;
-
-
