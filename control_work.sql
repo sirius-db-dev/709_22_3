@@ -27,7 +27,7 @@ intersect
 select distinct s.name
 from supplier_wo2 s
 join supplier_product_info_bnv sp on sp.supplier_id = s.id
-join product_bxy p on sp.vehicle_id .product_id = p.id
+join product_bxy p on sp.product_id = p.id
 where p.category = 'мониторы';
 
 --№4 Вывести названия компаний поставляющие часы либо имеющие транспортные средства грузоподъемностью от 5 до 10.
