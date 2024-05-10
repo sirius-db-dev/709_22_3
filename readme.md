@@ -1,3 +1,5 @@
+Решения отправлять [в форме](https://docs.google.com/forms/d/1LzqbHOmu5C-g_teBsPvtR3c-uIDN__tszJsiEHkS9x0)
+
 | Студент | URL |
 | --- | --- |
 | Галактионова | http://185.195.25.130:59400 |
